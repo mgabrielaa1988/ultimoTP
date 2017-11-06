@@ -108,6 +108,7 @@ int al_deleteArrayList(ArrayList* this)
 {
     int returnAux = -1;
 
+
     return returnAux;
 }
 
@@ -119,6 +120,11 @@ int al_deleteArrayList(ArrayList* this)
 int al_len(ArrayList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL)
+    {
+
+    }
 
     return returnAux;
 }
@@ -134,6 +140,10 @@ void* al_get(ArrayList* this, int index)
 {
     void* returnAux = NULL;
 
+    if(this!=NULL)
+    {
+        returnAux = this->pElements[index];
+    }
     return returnAux;
 }
 
@@ -194,6 +204,14 @@ int al_clear(ArrayList* this)
 {
     int returnAux = -1;
 
+     if(this!=NULL)
+    {
+        this->size = 0;
+        free(this->pElements);
+        this->pElements = NULL;
+       returnAux = 0;
+    }
+
     return returnAux;
 }
 
@@ -238,7 +256,15 @@ int al_push(ArrayList* this, int index, void* pElement)
 int al_indexOf(ArrayList* this, void* pElement)
 {
     int returnAux = -1;
+    int i;
 
+    for(i=0;i<this->size;i++)
+    {
+        if(pElement == al_get(this,i))
+        {
+            returnAux = i;
+        }
+    }
     return returnAux;
 }
 
@@ -327,6 +353,12 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 int resizeUp(ArrayList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL)
+    {
+
+        returnAux = 0;
+    }
 
     return returnAux;
 
